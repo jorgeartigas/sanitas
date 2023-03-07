@@ -1,0 +1,7 @@
+{
+  "name": "sanitas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
