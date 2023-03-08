@@ -1,20 +1,22 @@
-<ion-header [translucent]="true">
+<!-- Lo ideal sería separar los componentes y hacer un modulo compartido por si se necesita reutilizar en otros modulos -->
+<!-- Al ser una app sin mucha funcionalidad y que no tengo mucho tiempo lo he dejado así -->
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Search by id/text</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar show-clear-button="always" (ionChange)="handleFilter($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+  <div *cdkVirtualFor="let item of items">
+    <ion-item>
+      <ion-avatar>
+        <img [alt]="item.text" [src]="item.photo">
+      </ion-avatar>
+      <ion-label>
+        {{item.text}}
+      </ion-label>
+    </ion-item>
   </div>
-</ion-content>
+</cdk-virtual-scroll-viewport>
